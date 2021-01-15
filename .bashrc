@@ -10,9 +10,18 @@ fi
 
 # User specific aliases and functions
 
+alias emacs='emacs -nw'
+alias ll='ls -l'
+alias la='ls -a'
+
 export PS1='\[\e[1;31m\][\u@\h \W]\$\[\e[0m\] '
 
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
-export PATH
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
 
-eval `dircolors ~/.dircolors`
+# gradle bash completion
+source $HOME/bash_completion.d/gradle-completion.bash
+#source ~/.minishift-completion
+source ~/.oc-completion
+
